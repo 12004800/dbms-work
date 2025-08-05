@@ -697,9 +697,9 @@ SELECT first_name, last_name,
 
 SELECT project_name,
        CASE
-         WHEN DATEDIFF(end_date, start_date) IS NULL THEN 'Unknown'
-         WHEN DATEDIFF(end_date, start_date) < 100 THEN 'Short-Term'
-         WHEN DATEDIFF(end_date, start_date) <= 365 THEN 'Medium-Term'
+         WHEN end_date - start_date IS NULL THEN 'Unknown'
+         WHEN end_date - start_date < 100 THEN 'Short-Term'
+         WHEN end_date - start_date <= 365 THEN 'Medium-Term'
          ELSE 'Long-Term'
        END AS duration_label
      FROM project;
@@ -910,3 +910,4 @@ SELECT first_name, last_name,
 | Jake       | White     |          5 | Not Anniversary Month |
 +------------+-----------+------------+-----------------------+
 10 rows in set (0.000 sec)
+
